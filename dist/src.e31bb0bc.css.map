@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA","file":"src.e31bb0bc.css","sourceRoot":"../src","sourcesContent":["body {\n  text-align: center; \n  font-size: 20px; \n  padding: 2.5%; \n  font-family: Lato; \n}\n\nh1, h2, h3, h4, h5 {\n  font-family: 'EconomicaBold';\n}"]}
