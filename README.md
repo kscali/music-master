@@ -1,0 +1,1 @@
+This is created with React, Redux, Javascript, and Css. It uses the Spotify API to search for music from a particular artist and display their music. 
