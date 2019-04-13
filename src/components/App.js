@@ -40,20 +40,19 @@ class App extends React.Component {
            <img className="heart" src="https://cdn2.iconfinder.com/data/icons/love-and-romance-vol-3-1/50/129-512.png"
             alt="headphones-heart-icon"
            /> 
-           <h2>Music Maestro</h2>
+           <h2>Music Exposed</h2>
            <Search searchArtist={this.searchArtist} />
         </div>
          { this.state.artist ? 
             (<div><Artist artist={this.state.artist} />
             <Tracks tracks={this.state.tracks} /> </div>) 
             : (<div class="main-page">
-                <h1>Welcome to Music Maestro.</h1>
+                <h1>Welcome to Music Exposed.</h1>
                 <h1> Please enter an artist name to find samples of their music.</h1>
               </div>
             )
          }
-        
-       </div> 
+      </div> 
     )
   }
 }

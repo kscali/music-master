@@ -14,6 +14,8 @@ class Search extends React.Component {
   }
 
   searchArtist = () => {
+    let body = document.getElementById("root")
+    body.style.backgroundImage = 'none';
     this.props.searchArtist(this.state.artistQuery)
   }
 

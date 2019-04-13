@@ -4,12 +4,14 @@ body {
   font-size: 20px; 
   padding: 2.5%; 
   font-family:'Montserrat', sans-serif;
-  background-image: url("https://www.bakadesuyo.com/wp-content/uploads/2012/11/music.jpg");
-  background-repeat: no-repeat;
-  background-size: 50%;
-  background-position: right bottom; 
-  height: 950px; 
+ 
+}
 
+#root {
+  background-image: url("http://sfwallpaper.com/images/headphone-girl-wallpaper-8.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 950px; 
 }
 
 .top {
@@ -51,8 +53,9 @@ h3 {
 .main-page {
   width: 50%;
   position: relative; 
-  margin-top: 100px; 
+  margin-top: 150px; 
   text-align: center; 
+  margin-left: 45%;
 }
 
 .genre {

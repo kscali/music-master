@@ -24275,6 +24275,9 @@ function (_React$Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "searchArtist", function () {
+      var body = document.getElementById("root");
+      body.style.backgroundImage = 'none';
+
       _this.props.searchArtist(_this.state.artistQuery);
     });
 
@@ -24405,7 +24408,7 @@ function (_React$Component) {
         className: "heart",
         src: "https://cdn2.iconfinder.com/data/icons/love-and-romance-vol-3-1/50/129-512.png",
         alt: "headphones-heart-icon"
-      }), _react.default.createElement("h2", null, "Music Maestro"), _react.default.createElement(_Search.default, {
+      }), _react.default.createElement("h2", null, "Music Exposed"), _react.default.createElement(_Search.default, {
         searchArtist: this.searchArtist
       })), this.state.artist ? _react.default.createElement("div", null, _react.default.createElement(_Artist.default, {
         artist: this.state.artist
@@ -24413,7 +24416,7 @@ function (_React$Component) {
         tracks: this.state.tracks
       }), " ") : _react.default.createElement("div", {
         class: "main-page"
-      }, _react.default.createElement("h1", null, "Welcome to Music Maestro."), _react.default.createElement("h1", null, " Please enter an artist name to find samples of their music.")));
+      }, _react.default.createElement("h1", null, "Welcome to Music Exposed."), _react.default.createElement("h1", null, " Please enter an artist name to find samples of their music.")));
     }
   }]);
 
