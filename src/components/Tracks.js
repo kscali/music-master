@@ -39,7 +39,7 @@ class Tracks extends React.Component {
     const { tracks } = this.props; 
 
     return (
-    <div class="slider">
+    <div className="slider">
       { tracks.map(track => {
         const { id, name, album, preview_url } = track; 
         return <div 

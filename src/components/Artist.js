@@ -10,6 +10,7 @@ const Artist = ({ artist }) => {
       <p>{ followers.total } Followers</p>
       <p className="genre">{ genres.join(", ")}</p>
       <img 
+        className="artist-photo"
         src={images[0] && images[0].url} 
         alt="artist-profile" 
         style={{ 

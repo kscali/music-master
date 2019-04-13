@@ -19,11 +19,11 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div>
-        <input onChange={this.updateQuery}
+      <div className="top-right">
+        <input className="input" onChange={this.updateQuery}
           onKeyPress={this.handleKeyPress}
           placeholder=" Search for an Artist" />
-        <button onClick={this.searchArtist}>Search</button>
+        <button className="btn-input" onClick={this.searchArtist}>Search</button>
       </div>
     )
   }

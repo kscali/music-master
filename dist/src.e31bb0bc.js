@@ -24057,6 +24057,7 @@ var Artist = function Artist(_ref) {
   }, _react.default.createElement("h3", null, name), _react.default.createElement("p", null, followers.total, " Followers"), _react.default.createElement("p", {
     className: "genre"
   }, genres.join(", ")), _react.default.createElement("img", {
+    className: "artist-photo",
     src: images[0] && images[0].url,
     alt: "artist-profile",
     style: {
@@ -24179,7 +24180,7 @@ function (_React$Component) {
 
       var tracks = this.props.tracks;
       return _react.default.createElement("div", {
-        class: "slider"
+        className: "slider"
       }, tracks.map(function (track) {
         var id = track.id,
             name = track.name,
@@ -24283,11 +24284,15 @@ function (_React$Component) {
   _createClass(Search, [{
     key: "render",
     value: function render() {
-      return _react.default.createElement("div", null, _react.default.createElement("input", {
+      return _react.default.createElement("div", {
+        className: "top-right"
+      }, _react.default.createElement("input", {
+        className: "input",
         onChange: this.updateQuery,
         onKeyPress: this.handleKeyPress,
         placeholder: " Search for an Artist"
       }), _react.default.createElement("button", {
+        className: "btn-input",
         onClick: this.searchArtist
       }, "Search"));
     }
@@ -24400,9 +24405,15 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       console.log("this.state", this.state);
-      return _react.default.createElement("div", null, _react.default.createElement("h2", null, "Music Master"), _react.default.createElement(_Search.default, {
+      return _react.default.createElement("div", null, _react.default.createElement("div", {
+        className: "top"
+      }, _react.default.createElement("img", {
+        className: "heart",
+        src: "https://cdn2.iconfinder.com/data/icons/love-and-romance-vol-3-1/50/129-512.png",
+        alt: "headphones-heart-icon"
+      }), _react.default.createElement("h2", null, "Music Maestro"), _react.default.createElement(_Search.default, {
         searchArtist: this.searchArtist
-      }), _react.default.createElement(_Artist.default, {
+      })), _react.default.createElement(_Artist.default, {
         artist: this.state.artist
       }), _react.default.createElement(_Tracks.default, {
         tracks: this.state.tracks

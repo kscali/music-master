@@ -39,8 +39,13 @@ class App extends React.Component {
     console.log("this.state", this.state);
      return (
       <div>
-        <h2>Music Master</h2>
-        <Search searchArtist={this.searchArtist} />
+        <div className="top">
+           <img className="heart" src="https://cdn2.iconfinder.com/data/icons/love-and-romance-vol-3-1/50/129-512.png"
+            alt="headphones-heart-icon"
+           /> 
+           <h2>Music Maestro</h2>
+           <Search searchArtist={this.searchArtist} />
+        </div>
         <Artist artist={ this.state.artist } />
         <Tracks tracks={ this.state.tracks } />
       </div>
