@@ -24397,14 +24397,8 @@ function (_React$Component) {
   }
 
   _createClass(App, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.searchArtist("Celine Dion");
-    }
-  }, {
     key: "render",
     value: function render() {
-      console.log("this.state", this.state);
       return _react.default.createElement("div", null, _react.default.createElement("div", {
         className: "top"
       }, _react.default.createElement("img", {
@@ -24413,11 +24407,13 @@ function (_React$Component) {
         alt: "headphones-heart-icon"
       }), _react.default.createElement("h2", null, "Music Maestro"), _react.default.createElement(_Search.default, {
         searchArtist: this.searchArtist
-      })), _react.default.createElement(_Artist.default, {
+      })), this.state.artist ? _react.default.createElement("div", null, _react.default.createElement(_Artist.default, {
         artist: this.state.artist
       }), _react.default.createElement(_Tracks.default, {
         tracks: this.state.tracks
-      }));
+      }), " ") : _react.default.createElement("div", {
+        class: "main-page"
+      }, _react.default.createElement("h1", null, "Welcome to Music Maestro."), _react.default.createElement("h1", null, " Please enter an artist name to find samples of their music.")));
     }
   }]);
 

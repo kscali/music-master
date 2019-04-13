@@ -11,9 +11,6 @@ class App extends React.Component {
     tracks: []
   };
 
-  componentDidMount() {
-    this.searchArtist("Celine Dion");
-  }
   searchArtist = (artistQuery) => {
     let artist = artistQuery;
 
@@ -36,7 +33,7 @@ class App extends React.Component {
   }
   
   render() {
-    console.log("this.state", this.state);
+    
      return (
       <div>
         <div className="top">
@@ -46,9 +43,17 @@ class App extends React.Component {
            <h2>Music Maestro</h2>
            <Search searchArtist={this.searchArtist} />
         </div>
-        <Artist artist={ this.state.artist } />
-        <Tracks tracks={ this.state.tracks } />
-      </div>
+         { this.state.artist ? 
+            (<div><Artist artist={this.state.artist} />
+            <Tracks tracks={this.state.tracks} /> </div>) 
+            : (<div class="main-page">
+                <h1>Welcome to Music Maestro.</h1>
+                <h1> Please enter an artist name to find samples of their music.</h1>
+              </div>
+            )
+         }
+        
+       </div> 
     )
   }
 }
