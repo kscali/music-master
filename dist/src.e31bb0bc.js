@@ -24052,7 +24052,11 @@ var Artist = function Artist(_ref) {
       name = artist.name,
       followers = artist.followers,
       genres = artist.genres;
-  return _react.default.createElement("div", null, _react.default.createElement("h3", null, name), _react.default.createElement("p", null, followers.total, " Followers"), _react.default.createElement("p", null, genres.join(", ")), _react.default.createElement("img", {
+  return _react.default.createElement("div", {
+    className: "artist-div"
+  }, _react.default.createElement("h3", null, name), _react.default.createElement("p", null, followers.total, " Followers"), _react.default.createElement("p", {
+    className: "genre"
+  }, genres.join(", ")), _react.default.createElement("img", {
     src: images[0] && images[0].url,
     alt: "artist-profile",
     style: {
@@ -24153,6 +24157,18 @@ function (_React$Component) {
       };
     });
 
+    _defineProperty(_assertThisInitialized(_this), "trackIcon", function (track) {
+      if (!track.preview_url) {
+        return _react.default.createElement("span", null, "N/A");
+      }
+
+      if (_this.state.playing && _this.state.playingPreviewUrl === track.preview_url) {
+        return _react.default.createElement("span", null, "||");
+      }
+
+      return _react.default.createElement("span", null, "\u25B6");
+    });
+
     return _this;
   }
 
@@ -24162,18 +24178,26 @@ function (_React$Component) {
       var _this2 = this;
 
       var tracks = this.props.tracks;
-      return _react.default.createElement("div", null, tracks.map(function (track) {
+      return _react.default.createElement("div", {
+        class: "slider"
+      }, tracks.map(function (track) {
         var id = track.id,
             name = track.name,
             album = track.album,
             preview_url = track.preview_url;
         return _react.default.createElement("div", {
           key: id,
-          onClick: _this2.playAudio(preview_url)
+          onClick: _this2.playAudio(preview_url),
+          className: "track"
         }, _react.default.createElement("img", {
+          className: "track-image",
           src: album.images[0].url,
           alt: "track-image"
-        }), _react.default.createElement("p", null, name));
+        }), _react.default.createElement("p", {
+          className: "track-text"
+        }, name), _react.default.createElement("p", {
+          className: "track-icon"
+        }, _this2.trackIcon(track)));
       }));
     }
   }]);
@@ -24182,6 +24206,97 @@ function (_React$Component) {
 }(_react.default.Component);
 
 var _default = Tracks;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js"}],"components/Search.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var Search =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Search, _React$Component);
+
+  function Search() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, Search);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Search)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      artistQuery: ""
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleKeyPress", function (e) {
+      if (e.key === "Enter") {
+        _this.searchArtist();
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "updateQuery", function (e) {
+      _this.setState({
+        artistQuery: e.target.value
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "searchArtist", function () {
+      _this.props.searchArtist(_this.state.artistQuery);
+    });
+
+    return _this;
+  }
+
+  _createClass(Search, [{
+    key: "render",
+    value: function render() {
+      return _react.default.createElement("div", null, _react.default.createElement("input", {
+        onChange: this.updateQuery,
+        onKeyPress: this.handleKeyPress,
+        placeholder: " Search for an Artist"
+      }), _react.default.createElement("button", {
+        onClick: this.searchArtist
+      }, "Search"));
+    }
+  }]);
+
+  return Search;
+}(_react.default.Component);
+
+var _default = Search;
 exports.default = _default;
 },{"react":"../node_modules/react/index.js"}],"components/App.js":[function(require,module,exports) {
 "use strict";
@@ -24196,6 +24311,8 @@ var _react = _interopRequireDefault(require("react"));
 var _Artist = _interopRequireDefault(require("./Artist"));
 
 var _Tracks = _interopRequireDefault(require("./Tracks"));
+
+var _Search = _interopRequireDefault(require("./Search"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -24240,19 +24357,12 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(App)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
-      artistQuery: "",
       artist: null,
       tracks: []
     });
 
-    _defineProperty(_assertThisInitialized(_this), "updateQuery", function (e) {
-      _this.setState({
-        artistQuery: e.target.value
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "searchArtist", function () {
-      var artist = _this.state.artistQuery;
+    _defineProperty(_assertThisInitialized(_this), "searchArtist", function (artistQuery) {
+      var artist = artistQuery;
       fetch("".concat(API_ADDRESS, "/artist/").concat(artist)).then(function (res) {
         return res.json();
       }).then(function (json) {
@@ -24278,26 +24388,21 @@ function (_React$Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleKeyPress", function (e) {
-      if (e.key === "Enter") {
-        _this.searchArtist();
-      }
-    });
-
     return _this;
   }
 
   _createClass(App, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.searchArtist("Celine Dion");
+    }
+  }, {
     key: "render",
     value: function render() {
       console.log("this.state", this.state);
-      return _react.default.createElement("div", null, _react.default.createElement("h2", null, "Music Master"), _react.default.createElement("input", {
-        onChange: this.updateQuery,
-        onKeyPress: this.handleKeyPress,
-        placeholder: " Search for an Artist"
-      }), _react.default.createElement("button", {
-        onClick: this.searchArtist
-      }, "Search"), _react.default.createElement(_Artist.default, {
+      return _react.default.createElement("div", null, _react.default.createElement("h2", null, "Music Master"), _react.default.createElement(_Search.default, {
+        searchArtist: this.searchArtist
+      }), _react.default.createElement(_Artist.default, {
         artist: this.state.artist
       }), _react.default.createElement(_Tracks.default, {
         tracks: this.state.tracks
@@ -24310,7 +24415,7 @@ function (_React$Component) {
 
 var _default = App;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./Artist":"components/Artist.js","./Tracks":"components/Tracks.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./Artist":"components/Artist.js","./Tracks":"components/Tracks.js","./Search":"components/Search.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -24424,7 +24529,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64153" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53559" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

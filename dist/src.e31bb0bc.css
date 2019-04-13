@@ -1,3 +1,4 @@
+
 body {
   text-align: center; 
   font-size: 20px; 
@@ -8,5 +9,63 @@ body {
 h1, h2, h3, h4, h5 {
   font-family: 'EconomicaBold';
 }
+
+.genre {
+  text-transform: capitalize;
+}
+
+.track {
+  width: 250px;
+  height: 250px;
+  position: relative;
+  display: inline-block;
+  margin: 20px; 
+  cursor: pointer;
+}
+
+.track-image {
+  width: 250px;
+  height: 250px;
+}
+
+.track-text {
+  background-color: black;
+  color: white;
+  padding: 5px; 
+  position: absolute;
+  width: 250px;
+  bottom: 0px; 
+}
+
+.track-icon {
+  position: absolute;
+  bottom: 100px;
+  left: 100px;
+  color: white; 
+  background-color: black;
+  width: 50px;
+  height: 50px; 
+  border-radius: 25px; 
+  padding: 10px; 
+  opacity: 0.8px;
+}
+
+.slider {
+  /* line them up horizontally */
+  display: flex;
+
+  /* allow for scrolling */
+  overflow-x: auto;
+
+  /* make it smooth on iOS */
+  -webkit-overflow-scrolling: touch;
+}
+.slider > div {
+  /* make sure the width is honored */
+  flex-shrink: 0;
+  width: 300px;
+  height: 300px;
+}
+
 
 /*# sourceMappingURL=/src.e31bb0bc.css.map */

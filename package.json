@@ -17,9 +17,12 @@
   "dependencies": {
     "@babel/core": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.2.3",
+    "jquery": "^3.4.0",
     "live-server": "^1.2.1",
     "parcel-bundler": "^1.12.3",
     "react": "^16.6.3",
-    "react-dom": "^16.6.3"
+    "react-dom": "^16.6.3",
+    "react-slick": "^0.23.2",
+    "slick-carousel": "^1.8.1"
   }
 }

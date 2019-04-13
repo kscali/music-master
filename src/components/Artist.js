@@ -5,10 +5,10 @@ const Artist = ({ artist }) => {
   const { images, name, followers, genres } = artist; 
 
   return (
-    <div>
+    <div className="artist-div">
       <h3>{ name }</h3>
       <p>{ followers.total } Followers</p>
-      <p>{ genres.join(", ")}</p>
+      <p className="genre">{ genres.join(", ")}</p>
       <img 
         src={images[0] && images[0].url} 
         alt="artist-profile" 
