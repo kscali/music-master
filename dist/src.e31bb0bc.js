@@ -24033,7 +24033,7 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"components/App.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"components/Artist.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24042,6 +24042,41 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Artist = function Artist(_ref) {
+  var artist = _ref.artist;
+  if (!artist) return null;
+  var images = artist.images,
+      name = artist.name,
+      followers = artist.followers,
+      genres = artist.genres;
+  return _react.default.createElement("div", null, _react.default.createElement("h3", null, name), _react.default.createElement("p", null, followers.total, " Followers"), _react.default.createElement("p", null, genres.join(", ")), _react.default.createElement("img", {
+    src: images[0] && images[0].url,
+    alt: "artist-profile",
+    style: {
+      width: 200,
+      height: 200,
+      borderRadius: 100,
+      objectFit: 'cover'
+    }
+  }));
+};
+
+var _default = Artist;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js"}],"components/App.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Artist = _interopRequireDefault(require("./Artist"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -24143,7 +24178,9 @@ function (_React$Component) {
         placeholder: " Search for an Artist"
       }), _react.default.createElement("button", {
         onClick: this.searchArtist
-      }, "Search"));
+      }, "Search"), _react.default.createElement(_Artist.default, {
+        artist: this.state.artist
+      }));
     }
   }]);
 
@@ -24152,7 +24189,7 @@ function (_React$Component) {
 
 var _default = App;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./Artist":"components/Artist.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -24266,7 +24303,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62566" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62242" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
